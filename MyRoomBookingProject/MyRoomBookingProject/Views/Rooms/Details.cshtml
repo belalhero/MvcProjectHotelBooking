@@ -1,0 +1,56 @@
+﻿@model MyRoomBookingProject.Models.Room
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="text-align:center">Details</h2>
+
+<div style="margin-left:5%">
+    @{
+        string id3 = Request.Url.Segments.Last();
+        string url = Model.PicUrl;
+        <div style="float:left; display:inline-block;height:100%; border-top:2px solid white;">
+            <a href="#">
+                <img src="~/AppFile/Images/@url" height="500" width="700" />
+            </a>
+        </div>
+    }
+
+    <div style="float:left; display:inline-block;height:500px; width:30px">
+
+    </div>
+
+    <div style="float:left; display:inline-block; min-width:30%; height:500px;border-top:2px solid white;padding-left:15px; background-color:lavender; text-align:center">
+        <h2><a href="#">@Html.DisplayFor(model => model.Hotel.HotelName)</a></h2><hr />
+        <span style="font-weight:bold">Room Type :</span>
+        <span>@Html.DisplayFor(model => model.RoomType.RoomTypeName)</span><hr />
+        <span style="font-weight:bold">Maximum Capacity :</span>
+        <span>@Html.DisplayFor(model => model.MaxCapacity)</span><hr />
+        <span style="font-weight:bold">Number Of Bed :</span>
+        <span>@Html.DisplayFor(model => model.NumberOfBed)</span><hr />
+        <span style="font-weight:bold">Price Per Night :</span>
+        <span style="color:red;font-weight:bold">@Html.DisplayFor(model => model.PricePerNight)</span><hr />
+        <div style="text-align:center">
+            @*<button class="btn btn-success">
+                    @Html.ActionLink("Book Now", "Create", new { id = Model.RoomID})
+                </button>*@
+            <h2><a href='@Url.Action("BookingInformation","Rooms", new { id = Model.RoomID })'>Book Now</a></h2>
+        </div>
+    </div>
+    <div>
+        <div style="height:550px">
+
+        </div>
+        <hr />
+        <label style="text-align:justify">@Html.DisplayFor(model => model.Description)</label>
+        <br />
+    </div>
+</div>
+
+
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.RoomID }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

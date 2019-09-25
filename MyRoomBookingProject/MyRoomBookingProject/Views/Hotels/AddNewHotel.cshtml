@@ -1,0 +1,46 @@
+﻿@*@model IEnumerable<MyRoomBookingProject.Models.Hotel>*@
+@{
+    ViewBag.Title = "AddNewHotel";
+}
+
+<h2 style="text-align:center">Add New Hotel</h2>
+<div style="width:600px; height:400px; margin: 2px auto auto auto; background-color:gainsboro">
+    <div class="row">
+        <div class="col-md-6" style="margin: 2px auto auto auto; color:black ">
+            <form id="AddNewHotel" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+                <label>Hotel Name</label>
+                <input id="HotelName" name="HotelName" class="form-control" placeholder="Hotel Name" />
+
+                <label>Details</label>
+                <input id="Details" name="Details" class="form-control" placeholder="Details" />
+
+                <label>Photo</label>
+                <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" />
+                <br />
+                <button class="btn btn-success">Add Room</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function AjaxPost(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "/Hotels/SaveData",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href ="/Hotels/AddNewHotel"
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+    }
+</script>
+
+

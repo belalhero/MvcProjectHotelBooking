@@ -1,0 +1,81 @@
+﻿@model MyRoomBookingProject.Models.Room
+@{
+    /**/
+    ViewBag.Title = "BookingInformation";
+}
+
+<h2 style="text-align:center">Booking Information</h2>
+<hr />
+
+@{
+
+<div style="margin: 2px auto auto auto; width:950px; height:450px">
+    <div style="margin: 2px, auto, auto, auto; text-align:center; width:1000px; border-radius:20px">
+        <form id="AddNewRoom" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+            <div style="display:inline-block;height:560px; width:480px; border-top:2px solid white;padding-left:5px; background-color:cornflowerblue; text-align:left; padding-left: 80px; font-weight:bold; color:black; float:left">
+                <br />
+                <label>Hotel Name <span style="color:cornflowerblue; font-size:18px"> *</span></label>
+                <input id="HotelName" name="HotelName" class="form-control" value="@Html.DisplayFor(model => model.Hotel.HotelName)" readonly />
+
+                <label>Room Type <span style="color:cornflowerblue; font-size:18px"> *</span></label>
+                <input id="RoomType" name="RoomType" class="form-control" value="@Html.DisplayFor(model => model.RoomType.RoomTypeName)" readonly />
+
+                <label>Max Number Of Guest <span style="color:cornflowerblue; font-size:18px"> *</span></label>
+                <input id="MaxNumberOfGuest" name="MaxNumberOfGuest" class="form-control" value="@Html.DisplayFor(model => model.MaxCapacity)" readonly />
+
+                <label>Number Of Bed <span style="color:cornflowerblue; font-size:18px"> *</span></label>
+                <input id="NumberOfBed" name="NumberOfBed" class="form-control" value="@Html.DisplayFor(model => model.NumberOfBed)" readonly />
+
+                <label>Price Per Night <span style="color:cornflowerblue; font-size:18px"> *</span></label>
+                <input id="PricePerNight" name="PricePerNight" class="form-control" value="@Html.DisplayFor(model => model.PricePerNight)" readonly />
+            </div>
+            <div style="display:inline-block; min-width:30%; height:560px; width:480px; border-top:2px solid white; padding-right:55px; background-color:cornflowerblue; text-align:left; padding-left: 80px; font-weight:bold; color:black; float:left">
+                <br />
+                <label>Number Of Days<span style="color:red; font-size:18px"> *</span></label>
+                <input id="NumberOfDays" name="NumberOfDays" class="form-control" value="1" />
+                <div>
+                    <label>Guest Name<span style="color:red; font-size:18px"> *</span></label>
+                    <input id="GuestName" name="GuestName" class="form-control" placeholder="Guest Name" required />
+                </div>
+
+                <label>Mobile Number<span style="color:red; font-size:18px"> *</span></label>
+                <input id="MobileNo" name="MobileNo" class="form-control" placeholder="Mobile Number" required />
+
+                <label>CheckInDate<span style="color:red; font-size:18px"> *</span></label>
+                <input id="CheckIn" name="CheckIn" type="date" class="form-control" placeholder="Check In Date" required />
+
+                <label>Expected Check Out Date<span style="color:red; font-size:18px"> *</span></label>
+                <input id="ExpectedCheckOut" name="ExpectedCheckOut" type="date" class="form-control" placeholder="Check Ou tDate" required />
+
+                <br />
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-success">Send Request</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+}
+
+<script>
+    function AjaxPost(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "/BookingInfoes/SaveData",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href = "/Hotels/HotelList"
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+    }
+</script>
+
+
+

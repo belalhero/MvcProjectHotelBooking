@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MyRoomBookingProject.Models.Room>
+@{
+    ViewBag.Title = "AddNewRoom";
+}
+<h2 style="text-align:center">Add New Room</h2>
+
+<div>
+    <div class="row" style="width:600px; height:800px; margin: 2px auto auto auto; background-color:gainsboro">
+        <div class="col-md-8" style="margin: 2px auto auto auto ">
+            <form id="AddNewRoom" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+
+                <label>Hotel Name</label>
+                <div class="form-group" style="margin-left:-15px; width:480px">
+                    <div class="col-md-10">
+                        @Html.DropDownList("HotelID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <label>Room Type</label>
+                <div class="form-group" style="margin-left:-15px; width:480px">
+                    <div class="col-md-10">
+                        @Html.DropDownList("RoomTypeID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <label>Max Capacity</label>
+                <input id="MaxCapacity" name="MaxCapacity" class="form-control" placeholder="Max Capacity" />
+
+                <label>Number Of Bed</label>
+                <input id="NumberOfBed" name="NumberOfBed" class="form-control" placeholder="Number Of Bed" />
+
+                <label>Description</label>
+                <input id="Description" name="Description" class="form-control" placeholder="Description" />
+
+                <label>Price Per Night</label>
+                <input id="PricePerNight" name="PricePerNight" class="form-control" placeholder="Price Per Night" />
+
+                <label>Photo</label>
+                <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" />
+                <br />
+                <button class="btn btn-success">Add Room</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function AjaxPost(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "/Rooms/SaveData",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href = "/Rooms/AddNewRoom"
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+

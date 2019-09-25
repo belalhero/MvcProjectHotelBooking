@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MyRoomBookingProject.Models.BookingInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">All New Booking</h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxNumberOfGuest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfBed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerNight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedCheckOut)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxNumberOfGuest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfBed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePerNight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedCheckOut)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookingInfoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookingInfoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookingInfoID })
+        </td>
+    </tr>
+}
+
+</table>

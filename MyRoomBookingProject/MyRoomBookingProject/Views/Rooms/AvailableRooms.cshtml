@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyRoomBookingProject.Models.Room>
+@{
+    ViewBag.Title = "AvailableRooms";
+}
+
+<h2 class="text-center">Our Available Rooms</h2>
+<div>
+    <hr />
+    @{
+        foreach (var item in Model)
+        {
+            string hotel = Request.Url.Segments.Last().ToString().Replace("%20", " ");
+            if (item.Hotel.HotelName == hotel)
+            {
+                double price = Convert.ToInt32(item.PricePerNight);
+                <div class="col-md-3" style="margin-bottom:25px; margin-left: 5%; float:left;">
+                    <div class="thumbnail" style="background-color:gainsboro">
+                        <div class="image">
+                            <a href='#'>
+                                <img class="img-responsive" src="~/AppFile/Images/@item.PicUrl" height="240" width="300" />
+                            </a>
+                        </div>
+                        <div class="caption" style="border-top: 3px solid #808080; width:300px; background-color:gainsboro;  padding:15px">
+                            <h4>Product: <a href="#">@item.RoomType.RoomTypeName</a></h4><hr />
+                            <h4> Hotel Name : @item.Hotel.HotelName</h4><hr />
+                            <h4> Price : @price.ToString("F2")</h4><hr />
+                            <h4> Capacity : @item.MaxCapacity</h4><hr />
+                            <h4> Number of Bed : @item.NumberOfBed</h4><hr />
+                            <div>
+                                <button style="width:100%; background-color:blue">
+                                    @Html.ActionLink("Details", "Details", new { id = item.RoomID })
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

@@ -1,0 +1,98 @@
+﻿@model MyRoomBookingProject.Models.BookingInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookingInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxNumberOfGuest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxNumberOfGuest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfBed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfBed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerNight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerNight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedCheckOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedCheckOut)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingInfoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

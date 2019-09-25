@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "HotelList";
+}
+<h2 style="text-align:center">Our Available Hotels</h2>
+<hr />
+<div>
+    @foreach (var item in Model)
+    {
+        //if (item.HotelName == "Sayman")
+        {
+            <div style="margin-left:5%">
+                <div style="float:left; display:inline-block;height:300px; border-top:2px solid white;">
+                    <a href='@Url.Action("AvailableRooms", "Rooms", new { id = item.HotelName })'>
+                        <img src="~/AppFile/Images/@item.PicUrl" height="300" width="350" />
+                    </a>
+                </div>
+                <div style="float:left; display:inline-block; width:68%; height:300px;border-top:2px solid white;padding-left:15px; background-color:lavender;">
+                    <h2><a href='@Url.Action("AvailableRooms", "Rooms", new { id = item.HotelName })'>@item.HotelName</a></h2>
+                    <label>@item.Details</label>
+                </div>
+            </div>
+        }
+    }
+</div>
+
